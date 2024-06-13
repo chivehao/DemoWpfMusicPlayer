@@ -8,6 +8,7 @@ using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Media;
+using System.Windows.Navigation;
 
 namespace DemoWpfMusicPlayer
 {
@@ -218,6 +219,7 @@ namespace DemoWpfMusicPlayer
 
         int _songIndex = 0;
         private void reloadAudio() {
+            if (_songIndex >= (Songs.Count) || _songIndex < 0) return;
             SongModel song = Songs[_songIndex];
             Uri uri = new Uri(song.SongPath);
             // player.Open(uri);
