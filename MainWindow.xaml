@@ -103,6 +103,11 @@
                                 <TextBlock Text="{Binding SongName}" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Left" Foreground="#333"/>
                                 <TextBlock Text="{Binding Singer}" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="#999" Margin="0,0,20,0"/>
                             </Grid>
+                            <DataTemplate.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter TargetName="root" Property="Background" Value="#66BEE6F3" />
+                                </Trigger>
+                            </DataTemplate.Triggers>
                         </DataTemplate>
                     </ItemsControl.ItemTemplate>
                 </ItemsControl>
