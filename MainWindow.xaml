@@ -52,19 +52,19 @@
             </Border>
             
             <StackPanel Grid.Column="1" Margin="25,35,25,5">
-                <TextBlock Text="未播放" FontSize="16" Foreground="#555" />
-                <TextBlock Text="未知" FontSize="13" Foreground="#AAA" />
-                <TextBlock Text="00:00/00:00" FontSize="13" Foreground="#AAA" TextAlignment="Right"/>
-                <ProgressBar Value="50" Height="8" Background="#FFF" Foreground="#FFBEE6F3" BorderThickness="0" Minimum="0" Maximum="100"/>
+                <TextBlock Text="{Binding SongName}" FontSize="16" Foreground="#555" />
+                <TextBlock Text="{Binding Songer}" FontSize="13" Foreground="#AAA" />
+                <TextBlock Text="{Binding TimeStr}" FontSize="13" Foreground="#AAA" TextAlignment="Right"/>
+                <ProgressBar Value="{Binding ProgressValue}" Height="8" Background="#FFF" Foreground="#FFBEE6F3" BorderThickness="0" Minimum="0" Maximum="{Binding ProgressMax}"/>
 
                 <Grid Margin="0,10,0,0" >
                     <Button Width="26" Height="26" HorizontalAlignment="Left" Content="{Binding PlayModeStr}" Command="{Binding PlayModeCommand}"/>
                     <Button Width="26" Height="26" HorizontalAlignment="Right" Content="&#xebae;"/>
 
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                        <Button Width="26" Height="26" Content="&#xe72e;" />
-                        <Button Width="26" Height="26" Margin="10, 0" Content="&#xebaa;"/>
-                        <Button Width="26" Height="26" Content="&#xe72f;"/>
+                        <Button Width="26" Height="26" Content="&#xe72e;" Command="{Binding PreviousCommand}"/>
+                        <Button Width="26" Height="26" Margin="10, 0" Content="{Binding PlayStateStr}" Command="{Binding PlayCommand}"/>
+                        <Button Width="26" Height="26" Content="&#xe72f;" Command="{Binding NextCommand}"/>
 
                     </StackPanel>
                 </Grid>
