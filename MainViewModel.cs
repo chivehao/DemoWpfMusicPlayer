@@ -38,7 +38,7 @@ namespace DemoWpfMusicPlayer
         }
 
         #region 播放模式按钮
-        int _playMode = 0;
+        int _playMode = 0; // 0-顺序 1-单曲循环 2-随机
         private string _playModeStr = "\ue610";
         public string PlayModeStr
         {
@@ -176,11 +176,23 @@ namespace DemoWpfMusicPlayer
                 DoExecute = DoNextCommand
             };
         }
+        Random _rondom = new Random();
         private void DoNextCommand(object sender)
         {
-            if (_songIndex >= (Songs.Count - 1)) _songIndex = Songs.Count - 1;
-            _songIndex++;
-            reloadAudio();
+            int oldIndex = _songIndex;
+            if (_playMode == 0)
+            {  // 顺序
+                if (_songIndex >= (Songs.Count - 1)) _songIndex = Songs.Count - 1;
+                _songIndex++;
+            }
+            else if (_playMode == 1) // 单曲循环
+            { }
+            else if ( _playMode == 2) // 随机
+            { 
+                _songIndex = _rondom.Next(0, Songs.Count - 1);
+            }
+
+            if(oldIndex != _songIndex) reloadAudio();
             Resume();
         }
         #endregion
