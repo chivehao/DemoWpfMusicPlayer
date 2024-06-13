@@ -94,6 +94,11 @@
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
                             <Grid Height="30" Name="root" Background="Transparent">
+                                <Grid.InputBindings>
+                                    <MouseBinding MouseAction="LeftDoubleClick"
+                                                  CommandParameter="{Binding}"
+                                                  Command="{Binding DataContext.ListDoubleClickPlayCommand, RelativeSource={RelativeSource AncestorType=Window}}"/>
+                                </Grid.InputBindings>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="50" />
                                     <ColumnDefinition />

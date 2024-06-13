@@ -197,6 +197,23 @@ namespace DemoWpfMusicPlayer
         }
         #endregion
 
+        #region 列表双击播放
+        public CommandBase ListDoubleClickPlayCommand
+        {
+            get => new CommandBase()
+            {
+                DoExecute = DoListDoubleClickPlayCommand
+            };
+            }
+        private void DoListDoubleClickPlayCommand(object sender) { 
+            SongModel song = sender as SongModel;
+            int clickSongIndex = (song.Num ?? 1) - 1;
+            if (clickSongIndex == _songIndex) { return; }
+            _songIndex = clickSongIndex;
+            reloadAudio();
+            Resume();
+        }
+        #endregion
 
 
         int _songIndex = 0;
